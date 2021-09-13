@@ -94,8 +94,16 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
         shortcutBuilder.setIcon(Icon.createWithResource(context, resourceId));
       }
 
-      final ShortcutInfo shortcutInfo =
-          shortcutBuilder.setLongLabel(title).setShortLabel(title).setIntent(intent).build();
+      shortcutBuilder
+              .setLongLabel(title)
+              .setShortLabel(title)
+              .setIntent(intent);
+
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        shortcutBuilder.setLongLived(true)
+      }
+
+      final ShortcutInfo shortcutInfo = shortcutBuilder.build();
       shortcutInfos.add(shortcutInfo);
     }
     return shortcutInfos;
