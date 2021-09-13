@@ -100,7 +100,7 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
               .setIntent(intent);
 
       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        shortcutBuilder.setLongLived(true)
+        shortcutBuilder.setLongLived(true);
       }
 
       final ShortcutInfo shortcutInfo = shortcutBuilder.build();
